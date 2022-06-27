@@ -3,7 +3,7 @@ import pickle
 
 app = Flask(__name__)
 
-model_file = open('model.pkl', 'rb')
+model_file = open('rf_model2.pkl', 'rb')
 model = pickle.load(model_file, encoding='bytes')
 
 @app.route('/')
@@ -21,12 +21,12 @@ def predict():
     data = []
 
     data.append(int(age))
-    if sex == 'Laki-laki':
+    if sex == 'male':
         data.extend([0, 1])
     else:
         data.extend([1, 0])
 
-    if smoker == 'Ya':
+    if smoker == 'yes':
         data.extend([0, 1])
     else:
         data.extend([1, 0])
